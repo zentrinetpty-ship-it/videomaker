@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
         const client = getGeminiClient(apiKey);
         // Using 1.5 Pro for better reasoning and JSON structuring
         const model = client.getGenerativeModel({
-            model: "gemini-1.5-pro",
+            model: "gemini-pro",
             generationConfig: {
                 ...GENERATION_CONFIG,
                 responseMimeType: "application/json"
