@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
 
         const client = getGeminiClient(apiKey);
         const model = client.getGenerativeModel({
-            model: "gemini-pro",
+            model: "gemini-1.5-flash-latest",
             generationConfig: GENERATION_CONFIG,
             safetySettings: SAFETY_SETTINGS
         });
