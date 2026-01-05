@@ -48,7 +48,8 @@ export default function StepWizard({ apiKeys }: StepWizardProps) {
                     body: JSON.stringify({
                         prompt: storyIdea,
                         apiKey: apiKeys.geminiApiKey,
-                        promptSettings: apiKeys.promptSettings
+                        promptSettings: apiKeys.promptSettings,
+                        geminiModel: apiKeys.geminiModel
                     })
                 });
 
@@ -69,7 +70,8 @@ export default function StepWizard({ apiKeys }: StepWizardProps) {
                     body: JSON.stringify({
                         story: generatedStory,
                         apiKey: apiKeys.geminiApiKey,
-                        promptSettings: apiKeys.promptSettings
+                        promptSettings: apiKeys.promptSettings,
+                        geminiModel: apiKeys.geminiModel
                     })
                 });
 

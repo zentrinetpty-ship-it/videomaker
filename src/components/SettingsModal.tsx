@@ -63,8 +63,8 @@ export default function SettingsModal({ apiKeys, onSave, onClose }: SettingsModa
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id)}
                                 className={`flex items-center gap-2 px-4 py-3 rounded-t-lg transition-all ${isActive
-                                        ? 'bg-white/[0.08] text-white border-b-2 border-purple-500'
-                                        : 'text-gray-400 hover:text-white hover:bg-white/[0.04]'
+                                    ? 'bg-white/[0.08] text-white border-b-2 border-purple-500'
+                                    : 'text-gray-400 hover:text-white hover:bg-white/[0.04]'
                                     }`}
                             >
                                 <Icon className="w-4 h-4" />
@@ -100,13 +100,41 @@ export default function SettingsModal({ apiKeys, onSave, onClose }: SettingsModa
                                             <p className="text-xs text-gray-500 mt-2">
                                                 Get your API key from{' '}
                                                 <a
-                                                    href="https://makersuite.google.com/app/apikey"
+                                                    href="https://aistudio.google.com/apikey"
                                                     target="_blank"
                                                     rel="noopener noreferrer"
                                                     className="text-purple-400 hover:text-purple-300"
                                                 >
                                                     Google AI Studio
                                                 </a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="card">
+                                    <div className="flex items-start gap-3 mb-4">
+                                        <Sparkles className="w-5 h-5 text-blue-500 mt-1" />
+                                        <div className="flex-1">
+                                            <h3 className="font-semibold text-white mb-1">Gemini Model</h3>
+                                            <p className="text-sm text-gray-400 mb-3">
+                                                Select which Gemini model to use
+                                            </p>
+                                            <select
+                                                className="input"
+                                                value={formData.geminiModel || 'gemini-1.5-flash-latest'}
+                                                onChange={(e) =>
+                                                    setFormData({ ...formData, geminiModel: e.target.value })
+                                                }
+                                            >
+                                                <option value="gemini-1.5-flash-latest">Gemini 1.5 Flash (Latest)</option>
+                                                <option value="gemini-1.5-pro-latest">Gemini 1.5 Pro (Latest)</option>
+                                                <option value="gemini-2.0-flash-exp">Gemini 2.0 Flash (Experimental)</option>
+                                                <option value="gemini-pro">Gemini Pro (Legacy)</option>
+                                                <option value="gemini-pro-vision">Gemini Pro Vision (Legacy)</option>
+                                            </select>
+                                            <p className="text-xs text-gray-500 mt-2">
+                                                💡 Use "Latest" versions for best compatibility
                                             </p>
                                         </div>
                                     </div>

@@ -3,7 +3,7 @@ import { getGeminiClient, GENERATION_CONFIG, SAFETY_SETTINGS } from "@/lib/gemin
 
 export async function POST(req: NextRequest) {
     try {
-        const { prompt, genre, tone, apiKey, promptSettings } = await req.json();
+        const { prompt, genre, tone, apiKey, promptSettings, geminiModel } = await req.json();
 
         if (!apiKey) {
             return NextResponse.json(
@@ -21,7 +21,7 @@ export async function POST(req: NextRequest) {
 
         const client = getGeminiClient(apiKey);
         const model = client.getGenerativeModel({
-            model: "gemini-1.5-flash-latest",
+            model: geminiModel || "gemini-1.5-flash-latest",
             generationConfig: GENERATION_CONFIG,
             safetySettings: SAFETY_SETTINGS
         });

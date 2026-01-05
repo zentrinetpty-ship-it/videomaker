@@ -38,6 +38,7 @@ export interface PromptSettings {
 
 export interface APIKeys {
   geminiApiKey: string;
+  geminiModel?: string;        // Selected Gemini model version
   vertexProjectId?: string;
   vertexLocation?: string;
   promptSettings?: PromptSettings;

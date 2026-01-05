@@ -3,7 +3,7 @@ import { getGeminiClient, GENERATION_CONFIG, SAFETY_SETTINGS } from "@/lib/gemin
 
 export async function POST(req: NextRequest) {
     try {
-        const { story, apiKey, promptSettings } = await req.json();
+        const { story, apiKey, promptSettings, geminiModel } = await req.json();
 
         if (!apiKey) {
             return NextResponse.json({ error: "API Key is required" }, { status: 401 });
@@ -14,9 +14,9 @@ export async function POST(req: NextRequest) {
         }
 
         const client = getGeminiClient(apiKey);
-        // Using 1.5 Pro for better reasoning and JSON structuring
+        // Using Pro model for better reasoning and JSON structuring
         const model = client.getGenerativeModel({
-            model: "gemini-1.5-pro-latest",
+            model: geminiModel || "gemini-1.5-pro-latest",
             generationConfig: {
                 ...GENERATION_CONFIG,
                 responseMimeType: "application/json"
